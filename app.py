@@ -1,7 +1,7 @@
 import os
 from flask import (
     Flask,  flash, render_template,
-    session, redirect, url_for)
+    session, redirect, url_for, request)
 from bson.objectid import ObjectId
 from flask_pymongo import PyMongo
 if os.path.exists("env.py"):
@@ -21,7 +21,7 @@ mongo = PyMongo(app)
 @app.route("/get_task")
 def get_task():
     tasks = mongo.db.tasks.find()
-    return render_template("task.html", tasks=tasks)
+    return render_template("tasks.html", tasks=tasks)
 
 
 if __name__ == "__main__":
